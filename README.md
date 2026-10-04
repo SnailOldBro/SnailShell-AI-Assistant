@@ -12,6 +12,7 @@
 
 - **仓库**：<https://github.com/SnailOldBro/SnailShell-AI-Assistant>
 - **问题反馈 / 功能建议**：<https://github.com/SnailOldBro/SnailShell-AI-Assistant/issues>
+- **隐私政策**：<https://snailoldbro.github.io/SnailShell-AI-Assistant/privacy-policy.html>
 - **拉取源码**：`git clone https://github.com/SnailOldBro/SnailShell-AI-Assistant.git`
 - **打包上架用**：`bash package.sh`（产物 `snailshell-v<版本>.zip`，`manifest.json` 在 ZIP 顶层）
 - 开源仓库已做脱敏处理：不含任何收款码图片、真实邮箱、API Key，以及内部打包脚本
