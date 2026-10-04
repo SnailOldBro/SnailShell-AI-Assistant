@@ -80,7 +80,7 @@ What we don't do: no bulk crawling, no paywall bypass, no cookie or credential a
 ## 七、分类 / 语言 / 其他字段
 - 分类 Category：**Productivity（生产力）**
 - 语言 Language：**zh-CN（简体中文）**，建议补充 **en**
-- 隐私政策 URL Privacy policy URL：托管 `privacy-policy.html` 后的公开链接（见下方说明）
+- 隐私政策 URL Privacy policy URL：`https://snailoldbro.github.io/SnailShell-AI-Assistant/privacy-policy.html`（已部署，可直接用）
 - 商家/非商家 Trader status（Chrome）：个人免费工具选 **Non-trader（非商家）**
 - 可见性 Visibility：首次建议 **Unlisted（仅链接可装）** 软启动，验证无误后改 Public
 
@@ -94,8 +94,10 @@ What we don't do: no bulk crawling, no paywall bypass, no cookie or credential a
 
 ---
 
-## 九、隐私政策托管建议
-`privacy-policy.html` 是一个独立双语页面，可免费托管到：
-- **GitHub Pages**（仓库 Settings → Pages，指向 main 分支根目录）
-- **Vercel / Netlify / Cloudflare Pages**（拖拽部署，秒级拿到 https 链接）
-- 任何静态托管；拿到公开 URL 后填进两个商店的「隐私政策 URL」字段。
+## 九、隐私政策托管（已完成）
+`privacy-policy.html` 是独立双语页面，**已用 GitHub Pages 部署**：
+- 分支：`gh-pages`（只含隐私政策文件，站点干净）
+- 链接：<https://snailoldbro.github.io/SnailShell-AI-Assistant/privacy-policy.html>
+- 站点根有跳转索引页；HTTPS 已强制开启
+
+改动隐私政策内容后，把新文件传到 `gh-pages` 分支根目录即可，链接不变。
