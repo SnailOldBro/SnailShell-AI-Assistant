@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蜗牛壳AI助理 · 隐私政策 / Privacy Policy</title>
+<style>
+  :root { --fg:#1f2328; --muted:#57606a; --accent:#2f6f4f; --bg:#ffffff; --card:#f6f8fa; --border:#d0d7de; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif; color:var(--fg); background:var(--bg); line-height:1.7; }
+  header { background:var(--card); border-bottom:1px solid var(--border); padding:32px 20px; text-align:center; }
+  header h1 { margin:0 0 6px; font-size:24px; }
+  header p { margin:0; color:var(--muted); font-size:14px; }
+  .wrap { max-width:860px; margin:0 auto; padding:24px 20px 60px; }
+  .lang-switch { display:flex; gap:8px; justify-content:center; margin:18px 0 6px; }
+  .lang-switch button { cursor:pointer; border:1px solid var(--border); background:#fff; color:var(--fg); padding:8px 18px; border-radius:999px; font-size:14px; }
+  .lang-switch button.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .lang-content { display:none; }
+  .lang-content.active { display:block; }
+  section { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 22px; margin:16px 0; }
+  section h2 { margin:0 0 10px; font-size:18px; color:var(--accent); }
+  section p { margin:8px 0; }
+  ul { margin:8px 0; padding-left:22px; }
+  li { margin:4px 0; }
+  .updated { text-align:center; color:var(--muted); font-size:13px; margin-top:8px; }
+  code { background:#eef1f4; padding:1px 6px; border-radius:6px; font-size:13px; }
+  footer { text-align:center; color:var(--muted); font-size:13px; padding:20px; border-top:1px solid var(--border); }
+</style>
+</head>
+<body>
+<header>
+  <h1>蜗牛壳AI助理 · 隐私政策</h1>
+  <p>SnailShell AI Assistant — Privacy Policy</p>
+</header>
+
+<div class="wrap">
+  <div class="lang-switch">
+    <button id="btn-zh" class="active" onclick="switchLang('zh')">中文</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- ===== 中文 ===== -->
+  <div id="zh" class="lang-content active">
+    <p class="updated">生效日期：2026-09-30</p>
+
+    <section>
+      <h2>1. 概述</h2>
+      <p>蜗牛壳AI助理（以下简称"本扩展"）是一款浏览器侧边栏工具，用于总结网页、基于页面上下文提问、以及引用选中文字向 AI 提问。我们坚持"数据最小化"原则：<strong>本扩展不运营任何用于收集用户数据的服务器。</strong></p>
+    </section>
+
+    <section>
+      <h2>2. 我们收集的数据</h2>
+      <p><strong>我们不收集您的个人数据。</strong>本扩展不会向开发者或任何第三方服务器传输您的浏览内容、对话记录、API Key 或设备信息。我们没有分析 SDK、没有遥测、没有广告追踪。</p>
+    </section>
+
+    <section>
+      <h2>3. 数据如何被使用与传输</h2>
+      <p>当您主动使用"总结本页""页面提问"或"引用选中内容提问"时，当前页面的正文或您选中的文字会被发送到<strong>您在设置中自行配置的 AI 服务</strong>（如 DeepSeek、Qwen、GLM、Kimi、Ollama，或任意 OpenAI 兼容 endpoint），并使用<strong>您自己的 API Key</strong>，通过 HTTPS 直连该服务。</p>
+      <ul>
+        <li>数据<strong>不经过任何第三方中转服务器</strong>，也不经过开发者服务器。</li>
+        <li>如果您未配置任何模型，本扩展不会向任何外部服务发送数据。</li>
+        <li>发送的内容范围仅限您当前已渲染的页面正文或主动选中的文字。</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. API Key 的存储</h2>
+      <p>您的 API Key 仅保存在<strong>您本地浏览器的扩展存储</strong>（<code>chrome.storage.local</code>）中：</p>
+      <ul>
+        <li><strong>明文模式（默认）</strong>：Key 以明文存于本机，便于重开浏览器免填。仅本机文件系统完整权限的恶意程序可能读取。</li>
+        <li><strong>主密码保护（可选）</strong>：所有 Key 使用 PBKDF2 + AES-GCM 整体加密后落盘，重开浏览器需输入一次主密码解锁。加密不可逆、无法找回。</li>
+      </ul>
+      <p>开发者无法访问您的 API Key。</p>
+    </section>
+
+    <section>
+      <h2>5. 对话历史</h2>
+      <p>对话记录仅保存在您的<strong>本机扩展存储</strong>，不会上传到任何服务器。</p>
+    </section>
+
+    <section>
+      <h2>6. 我们不会做的事</h2>
+      <ul>
+        <li>不收集浏览历史、不读取 Cookie、不获取账号凭据；</li>
+        <li>不翻页批量抓取、不绕过付费墙、不自动构造请求；</li>
+        <li>不向开发者或第三方服务器传输任何用户数据；</li>
+        <li>不出售、不共享任何用户信息。</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. 权限说明</h2>
+      <ul>
+        <li><code>sidePanel</code>：提供侧边栏交互界面（总结 / 提问 / 引用）。</li>
+        <li><code>contextMenus</code>：提供右键菜单「AI 就这段内容提问」「AI 总结选中内容」。</li>
+        <li><code>storage</code>：在本机保存用户的模型配置与对话历史。</li>
+        <li><code>activeTab</code>：仅在用户主动点击图标或右键时，访问当前标签页内容。</li>
+        <li><code>scripting</code>：向页面注入本地的正文提取脚本，用于总结与引用。</li>
+        <li><code>clipboardWrite</code>：将 AI 回答复制到剪贴板。</li>
+        <li><code>host_permissions &lt;all_urls&gt;</code>：因需对任意网页读取已渲染正文做总结；仅用户主动触发、仅读取已渲染内容、不外传。</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>8. 儿童隐私</h2>
+      <p>本扩展不面向儿童，也不故意收集儿童的任何信息。</p>
+    </section>
+
+    <section>
+      <h2>9. 政策变更</h2>
+      <p>若隐私政策发生变更，我们将更新本页面与生效日期。重大变更会通过扩展更新说明告知。</p>
+    </section>
+
+    <section>
+      <h2>10. 联系方式</h2>
+      <p>如对本隐私政策有疑问，可通过扩展设置页或项目主页联系开发者。</p>
+    </section>
+  </div>
+
+  <!-- ===== English ===== -->
+  <div id="en" class="lang-content">
+    <p class="updated">Effective: 2026-09-30</p>
+
+    <section>
+      <h2>1. Overview</h2>
+      <p>SnailShell AI Assistant (the "Extension") is a browser side-panel tool that summarizes web pages, answers questions with page context, and lets you quote selected text to chat with an AI. We follow data minimization: <strong>the Extension operates no server that collects user data.</strong></p>
+    </section>
+
+    <section>
+      <h2>2. What we collect</h2>
+      <p><strong>We collect no personal data.</strong> The Extension transmits no browsing content, chat history, API keys, or device information to the developer or any third-party server. There are no analytics SDKs, telemetry, or ad trackers.</p>
+    </section>
+
+    <section>
+      <h2>3. How data is used and transmitted</h2>
+      <p>When you actively use "Summarize this page", "Ask about this page", or "Ask about the selected text", the page's main text or your selected text is sent to <strong>the AI service you configure yourself</strong> in settings (e.g. DeepSeek, Qwen, GLM, Kimi, Ollama, or any OpenAI-compatible endpoint), using <strong>your own API key</strong>, over HTTPS directly to that service.</p>
+      <ul>
+        <li>Data passes through <strong>no third-party relay and no developer server</strong>.</li>
+        <li>If you configure no model, the Extension sends nothing to any external service.</li>
+        <li>Only the rendered page text or your explicitly selected text is sent.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Storage of API keys</h2>
+      <p>Your API keys are stored only in <strong>your local browser extension storage</strong> (<code>chrome.storage.local</code>):</p>
+      <ul>
+        <li><strong>Plaintext mode (default)</strong>: keys stored on your device for convenience; only malware with full local filesystem access could read them.</li>
+        <li><strong>Master-password protection (optional)</strong>: all keys are encrypted with PBKDF2 + AES-GCM before being stored; unlock requires the master password once per browser launch. Encryption is irreversible.</li>
+      </ul>
+      <p>The developer cannot access your API keys.</p>
+    </section>
+
+    <section>
+      <h2>5. Conversation history</h2>
+      <p>Chat history is stored only in your <strong>local extension storage</strong> and is never uploaded.</p>
+    </section>
+
+    <section>
+      <h2>6. What we do NOT do</h2>
+      <ul>
+        <li>No browsing-history collection, no cookie reading, no credential access;</li>
+        <li>No bulk crawling, no paywall bypass, no automated request construction;</li>
+        <li>No transmission of any user data to the developer or third parties;</li>
+        <li>No sale or sharing of user information.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Permissions</h2>
+      <ul>
+        <li><code>sidePanel</code>: provides the side-panel UI (summarize / ask / quote).</li>
+        <li><code>contextMenus</code>: provides right-click menus "Ask AI about this selection" and "Summarize selection".</li>
+        <li><code>storage</code>: stores your model config and chat history locally.</li>
+        <li><code>activeTab</code>: accesses the current tab only when you click the icon or right-click.</li>
+        <li><code>scripting</code>: injects the local content-extraction script for summarizing and quoting.</li>
+        <li><code>clipboardWrite</code>: copies AI answers to the clipboard.</li>
+        <li><code>host_permissions &lt;all_urls&gt;</code>: needed to read rendered page text on any site for summarization; triggered only by the user, reads only rendered content, sends nothing.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>8. Children</h2>
+      <p>The Extension is not directed to children and does not knowingly collect information from children.</p>
+    </section>
+
+    <section>
+      <h2>9. Changes</h2>
+      <p>If this policy changes, we will update this page and its effective date. Material changes will be noted in the extension update notes.</p>
+    </section>
+
+    <section>
+      <h2>10. Contact</h2>
+      <p>For questions about this privacy policy, contact the developer via the extension's settings page or project homepage.</p>
+    </section>
+  </div>
+</div>
+
+<footer>© 2026 蜗牛壳AI助理 · SnailShell AI Assistant</footer>
+
+<script>
+  function switchLang(lang) {
+    document.getElementById('zh').classList.toggle('active', lang === 'zh');
+    document.getElementById('en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  }
+</script>
+</body>
+</html>
