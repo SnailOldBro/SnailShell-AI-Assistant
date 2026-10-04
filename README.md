@@ -1,6 +1,20 @@
 # 蜗牛壳AI助理（Chrome 扩展 · Manifest V3）
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![Manifest](https://img.shields.io/badge/Manifest-V3-blue.svg)](./manifest.json)
+[![Chrome](https://img.shields.io/badge/Chrome-扩展-绿色.svg)](https://chrome.google.com/webstore/category/extensions)
+
 自定义模型**——用自己的 API Key 直连你选的服务（DeepSeek / Qwen / GLM / Kimi / Ollama / 任意 endpoint），数据不经过任何第三方中转，免费更安全。
+
+## 开源
+
+本项目开源，协议 [MIT](./LICENSE)，可自由使用、修改、分发（需保留版权声明）。
+
+- **仓库**：<https://github.com/SnailOldBro/snailshell-ai-assistant>
+- **问题反馈 / 功能建议**：<https://github.com/SnailOldBro/snailshell-ai-assistant/issues>
+- **拉取源码**：`git clone https://github.com/SnailOldBro/snailshell-ai-assistant.git`
+- **打包上架用**：`bash package.sh`（产物 `snailshell-v<版本>.zip`，`manifest.json` 在 ZIP 顶层）
+- 开源仓库已做脱敏处理：不含任何收款码图片、真实邮箱、API Key，以及内部打包脚本
 
 ## 功能
 
