@@ -99,7 +99,8 @@ bash package.sh
 > **重要：manifest 里哪些字段会直接进商店页且不可改？**
 > Edge 会把 `manifest.json` 里的 **Name** 和 **Description** 自动带入商店详情页，且这两项在 Partner Center 的 Store Listings 页面是**只读**的。
 > 建议：先想清楚最终展示名与一句话简介，再定 manifest；后续想改就得重新提交新版本。
-> 当前 manifest：`"name": "蜗牛壳AI助理"`、`"description": "使用自己的key，数据直连不过任何中转服务器；自定义模型，免费更安全。"` —— 这个描述**偏短**（会被截断显示），建议补一句完整介绍再提交。
+> 当前 manifest：`"name": "蜗牛壳AI助理"`、`"description"` 为 129 字的完整一句话介绍（已定稿，勿再改）。
+> 注意区分两个字段：**manifest 的 description** 会自动进商店页且只读；**Step 7 的 Description 字段**要你自己填 250–5000 字符，用 `store-listing.md` 第三节的中/英文详细描述（574 字符，已够下限）。
 
 ### Step 2：在合作伙伴中心创建新的扩展
 - 登录 Partner Center → 左上 Home → **Workspaces** 区域点 **Edge 卡片** → Overview 页 → 点 **Create new extension** → 进入「Upload package (.zip file)」页。
