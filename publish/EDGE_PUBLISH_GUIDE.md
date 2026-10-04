@@ -44,7 +44,7 @@
 | 促销图（小） | 440 × 280（可选） | 无 | 从截图裁剪 |
 | 促销图（大） | 1400 × 560（可选） | 无 | 横幅设计 |
 | 描述文字 | **250–5000 字符**（纯文本，非富文本） | 已备（中英双语） | 直接用 `store-listing.md` 内容 |
-| 隐私政策 URL | 公开可访问的 https 链接 | ⏳ 页面已备，公开 URL 待你部署 | 部署后把链接填进 Step 5 / Step 6（**唯一剩余待办**）|
+| 隐私政策 URL | 公开可访问的 https 链接 | ✅ 已部署 | `https://snailoldbro.github.io/SnailShell-AI-Assistant/privacy-policy.html` |
 |  YouTube 视频 | 可选，推荐不超过 2 分钟 | 无 | 可选，能显著提高通过感与转化 |
 | 搜索词 | 合计最多 **21 个词/词组** | 未填 | 见 Step 7 |
 
@@ -173,15 +173,19 @@ bash package.sh
 
 ---
 
-## 3. 隐私政策 URL 怎么拿（必须先有链接）
+## 3. 隐私政策 URL（已就绪，不用再部署）
 
-Edge 要求隐私政策是**真实可公开访问**的链接。三种免费方案（任选其一）：
+**可直接复制到 Step 5 和 Step 6 的「隐私政策 URL」字段：**
 
-1. **GitHub Pages**：把 `publish/privacy-policy.html` 放到仓库根目录 → Settings → Pages → 部署分支 `main` → 得到 `https://<user>.github.io/<repo>/privacy-policy.html`
-2. **Vercel / Netlify / Cloudflare Pages**：直接拖拽目录部署，秒级给 https 域名
-3. **GitHub Gist / Notion 公开页**（临时方案，够用但不如前两者正式）
+```text
+https://snailoldbro.github.io/SnailShell-AI-Assistant/privacy-policy.html
+```
 
-> 部署完**先在浏览器打开确认能访问、无 404**，再填进表单。
+已用 GitHub Pages 部署（`gh-pages` 分支根目录，站点只含隐私政策一个文件），HTTPS 已强制开启，实测 HTTP 200 可访问。
+
+> 该链接长期有效，不依赖任何第三方托管服务。若将来改了隐私政策内容，
+> 重新上传 `publish/privacy-policy.html` 到 `gh-pages` 分支即可，链接不变。
+> 站点根 `https://snailoldbro.github.io/SnailShell-AI-Assistant/` 有一个跳转索引页。
 
 ---
 
