@@ -14,8 +14,7 @@
 - **问题反馈 / 功能建议**：<https://github.com/SnailOldBro/SnailShell-AI-Assistant/issues>
 - **隐私政策**：<https://snailoldbro.github.io/SnailShell-AI-Assistant/privacy-policy.html>
 - **拉取源码**：`git clone https://github.com/SnailOldBro/SnailShell-AI-Assistant.git`
-- **打包上架用**：`bash package.sh`（产物 `snailshell-v<版本>.zip`，`manifest.json` 在 ZIP 顶层）
-- 开源仓库已做脱敏处理：不含任何收款码图片、真实邮箱、API Key，以及内部打包脚本
+
 
 ## 功能
 
@@ -64,40 +63,5 @@
 - 不读取 Cookie、不碰账号凭据、不采集浏览历史
 - 发给模型的内容请自行评估敏感度
 
-## 目录结构
 
-```
-SnailShell AI Assistant/
-├── manifest.json              # MV3，权限最小化（sidePanel/contextMenus/storage/activeTab/scripting）
-├── src/
-│   ├── sidepanel/             # 侧边栏主界面（对话、流式、总结、引用）
-│   ├── options/               # 设置页（多模型增删改选、拉取模型、测试连接、主密码、鼓励支持）
-│   ├── background/            # service worker（右键菜单、打开侧栏、引用传递）
-│   └── shared/
-│       ├── providers.js       # 厂商预设表
-│       ├── llm-adapter.js     # OpenAI 兼容层（SSE 流解析 / 模型拉取 / 连接测试）
-│       ├── storage.js         # 多模型配置 + 主密码加密
-│       └── extractor.js       # 正文提取（自包含函数，按需注入）
-├── icons/                     # 16/48/128 PNG
-└── scripts/gen_icons.py       # 图标生成脚本（零依赖）
-```
 
-## 本地验收清单
-
-- [ ] `chrome://extensions` 开发者模式加载无报错
-- [ ] 点工具栏图标 → 侧边栏打开；未配置时显示「前往设置模型」引导
-- [ ] 设置页选 DeepSeek → 填 Key → 拉取模型 → 测试连接显示「连接成功」→ 保存
-- [ ] 打开任意文章页 → 点「总结本页」→ 流式输出要点；生成中「发送」变「停止」可中断
-- [ ] 在总结后继续追问（如「第二点展开讲讲」）→ 模型带上下文回答
-- [ ] 选中网页一段文字 → 右键「AI 就这段内容提问」→ 侧边栏出现引用块 → 输入问题得到回答
-- [ ] 选中文字 → 右键「AI 总结选中内容」→ 直接输出选段总结
-- [ ] 关闭浏览器重开 → 配置仍在，免填 Key（A 档）
-- [ ] 开启主密码 → Key 框变「已加密」；锁定后侧边栏要求解锁；输错密码提示错误
-- [ ] `chrome://` 等内部页面点「总结本页」→ 提示无法读取，不崩溃
-- [ ] 设置页底部「鼓励支持」→ 点 0.1/1/10 元商品卡片 → 显示对应微信/支付宝收款码与感谢语
-
-## 已知边界
-
-- `chrome://`、Chrome 商店等浏览器内部页面无法注入正文提取（浏览器限制），会给出明确提示
-- 部分站点正文结构特殊时，提取质量可能下降（启发式算法，后续可升级 Readability）
-- 服务商若调整 API 地址或模型名，需更新 `src/shared/providers.js` 预设表
