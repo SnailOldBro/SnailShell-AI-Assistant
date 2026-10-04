@@ -10,9 +10,9 @@
 
 本项目开源，协议 [MIT](./LICENSE)，可自由使用、修改、分发（需保留版权声明）。
 
-- **仓库**：<https://github.com/SnailOldBro/snailshell-ai-assistant>
-- **问题反馈 / 功能建议**：<https://github.com/SnailOldBro/snailshell-ai-assistant/issues>
-- **拉取源码**：`git clone https://github.com/SnailOldBro/snailshell-ai-assistant.git`
+- **仓库**：<https://github.com/SnailOldBro/SnailShell-AI-Assistant>
+- **问题反馈 / 功能建议**：<https://github.com/SnailOldBro/SnailShell-AI-Assistant/issues>
+- **拉取源码**：`git clone https://github.com/SnailOldBro/SnailShell-AI-Assistant.git`
 - **打包上架用**：`bash package.sh`（产物 `snailshell-v<版本>.zip`，`manifest.json` 在 ZIP 顶层）
 - 开源仓库已做脱敏处理：不含任何收款码图片、真实邮箱、API Key，以及内部打包脚本
 
