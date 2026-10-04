@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>蜗牛壳AI助理 · 设置</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>模型设置</h1>
+    <p class="subtitle">用自己的 key、自己的模型，数据直连不过任何中转服务器。可配置多个模型，随时切换使用。</p>
+
+    <section class="card">
+      <div class="card-title">我的模型</div>
+      <div id="modelList" class="model-list"></div>
+      <button id="btnAddModel" class="primary" type="button">+ 添加模型</button>
+    </section>
+
+    <section class="card hidden" id="editorCard">
+      <div class="card-title" id="editorTitle">添加模型</div>
+      <label class="field">
+        <span>显示名称</span>
+        <input type="text" id="mName" placeholder="如：DeepSeek 主模型" autocomplete="off" />
+      </label>
+      <label class="field">
+        <span>服务商预设（可选，快速填充地址）</span>
+        <select id="provider">
+          <option value="">不选，手动填写</option>
+        </select>
+      </label>
+      <label class="field">
+        <span>Base URL</span>
+        <input type="text" id="baseUrl" placeholder="https://api.deepseek.com/v1" autocomplete="off" />
+      </label>
+      <label class="field">
+        <span>API Key</span>
+        <div class="key-row">
+          <input type="password" id="apiKey" placeholder="sk-xxxx" autocomplete="off" />
+          <button id="btnToggleKey" class="ghost" type="button">显示</button>
+        </div>
+        <em class="hint" id="keyHint">Key 只保存在本机浏览器，不经过任何第三方中转。</em>
+      </label>
+      <label class="field">
+        <span>模型名</span>
+        <div class="key-row">
+          <div class="model-combo">
+            <input id="model" placeholder="如 deepseek-chat，或点右侧拉取" autocomplete="off" />
+            <div id="modelDropdown" class="model-dropdown hidden"></div>
+          </div>
+          <button id="btnFetchModels" class="action-btn" type="button">拉取模型</button>
+        </div>
+        <em class="hint">填好 Base URL 与 Key 后点「拉取模型」自动列出；也可手动填写。</em>
+      </label>
+      <div class="actions">
+        <button id="btnTest" class="action-btn" type="button">测试连接</button>
+        <button id="btnSaveModel" class="primary" type="button">保存模型</button>
+        <button id="btnCancelEdit" class="ghost" type="button">取消</button>
+      </div>
+      <div id="status" class="status"></div>
+    </section>
+
+    <section class="card">
+      <button type="button" class="card-title collapsible-header" id="vaultToggle" aria-expanded="false" aria-controls="vaultBody">
+        <span>主密码保护（可选增强）</span>
+        <svg class="collapse-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="collapsible-body hidden" id="vaultBody">
+        <p class="subtitle" id="vaultStatus">当前：明文存储，重开浏览器免填 Key。</p>
+        <label class="field">
+          <span>主密码</span>
+          <input type="password" id="vaultPwd" placeholder="至少 4 位，用于加密你的 API Key" autocomplete="off" />
+        </label>
+        <div class="actions">
+          <button id="btnEnableVault" class="ghost" type="button">开启主密码保护</button>
+          <button id="btnUnlockVault" class="ghost hidden" type="button">解锁</button>
+          <button id="btnLockVault" class="ghost hidden" type="button">立即上锁</button>
+          <button id="btnDisableVault" class="ghost hidden" type="button">关闭主密码保护</button>
+          <button id="btnResetVault" class="ghost danger hidden" type="button">重置保护（清空 Key）</button>
+        </div>
+        <p class="hint">开启后，所有 API Key 以密文保存在本机，重开浏览器需输入一次主密码解锁（不必重填完整 Key）。<strong>主密码无法找回</strong>——加密数据不可逆。忘记时只能「重置保护」：清空已加密的 Key，回到明文模式后重新填写。</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-title">偏好</div>
+      <label class="field">
+        <span>偏好提示词（可选）</span>
+        <textarea id="summaryPrompt" rows="3" placeholder="留空使用默认。例如：用中文总结，先给一句话结论，再列 3-5 条要点。"></textarea>
+      </label>
+      <div class="actions">
+        <button id="btnSavePrefs" class="primary" type="button">保存偏好</button>
+      </div>
+    </section>
+
+    <h2 class="about-title">关于蜗牛壳</h2>
+
+    <section class="card">
+      <div class="card-title">反馈和建议</div>
+      <p class="sub-block-desc">有任何想法、建议，或遇到问题，欢迎给我发邮件。</p>
+      <div class="feedback-row">
+        <span class="email" id="emailText">https://github.com/SnailOldBro/snailshell-ai-assistant/issues</span>
+        <button id="btnCopyEmail" class="ghost" type="button">复制</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-title">鼓励支持</div>
+      <p class="sub-block-desc">如果这个工具帮到了客官，是小二的荣幸～</p>
+      <div class="reward-list">
+        <button class="reward-item" data-amount="0.1" type="button">
+          <span class="reward-emoji">🎀</span>
+          <span class="reward-name">一根螺纹头绳</span>
+        </button>
+        <button class="reward-item" data-amount="1" type="button">
+          <span class="reward-emoji">🍭</span>
+          <span class="reward-name">一支酸奶棒棒糖</span>
+        </button>
+        <button class="reward-item" data-amount="10" type="button">
+          <span class="reward-emoji">🧋</span>
+          <span class="reward-name">一杯啵啵奶茶</span>
+        </button>
+      </div>
+      <div class="qr-area hidden" id="qrArea">
+        <div class="qr-grid">
+          <div class="qr-col">
+            <img id="qrAlipay" class="qr-image" alt="支付宝收款码" />
+            <span class="qr-label">支付宝</span>
+          </div>
+          <div class="qr-col">
+            <img id="qrWechat" class="qr-image" alt="微信收款码" />
+            <span class="qr-label">微信</span>
+          </div>
+        </div>
+        <p id="qrAmount" class="qr-amount"></p>
+        <p id="rewardThanks" class="reward-thanks"></p>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>

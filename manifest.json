@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "蜗牛壳AI助理",
+  "version": "1.2.3",
+  "description": "蜗牛壳AI助理：总结网页、针对页面提问、右键引用选段向 AI 提问。支持自定义 OpenAI 兼容模型（DeepSeek / Qwen / GLM / Kimi / Ollama 等），用你自己的 API Key 直连，数据不经任何中转服务器，免费且更安全。",
+  "minimum_chrome_version": "114",
+
+  "permissions": [
+    "sidePanel",
+    "contextMenus",
+    "storage",
+    "activeTab",
+    "scripting",
+    "clipboardWrite"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "background": {
+    "service_worker": "src/background/service-worker.js",
+    "type": "module"
+  },
+
+  "side_panel": {
+    "default_path": "src/sidepanel/index.html"
+  },
+
+  "options_page": "src/options/index.html",
+
+  "action": {
+    "default_title": "蜗牛壳AI助理：自定义模型，免费且安全",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

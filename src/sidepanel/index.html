@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>蜗牛壳AI助理</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true"></span>
+      <div class="brand-text">
+        <div class="model-name" id="modelName"></div>
+        <select id="modelSelect" class="model-select" title="切换模型"></select>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button id="btnOptions" class="icon-btn" title="模型设置" aria-label="模型设置">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </button>
+      <button id="btnHistory" class="icon-btn" title="历史记录" aria-label="历史记录">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </button>
+      <button id="btnClear" class="icon-btn" title="清空对话" aria-label="清空对话">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+      </button>
+      <button id="btnNewChat" class="icon-btn" title="新建对话" aria-label="新建对话">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="12" y1="7" x2="12" y2="13"/><line x1="9" y1="10" x2="15" y2="10"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="chat" class="chat"></main>
+
+  <div id="emptyState" class="empty-state">
+    <p class="empty-title">开始使用</p>
+    <p class="empty-desc">
+      选中网页文字 → 右键「AI 就这段内容提问」<br />
+      或输入「/」调用总结本页等功能<br />
+      或任意提问
+    </p>
+    <button id="btnEmptyOptions" class="primary">前往设置模型</button>
+  </div>
+
+  <div id="unlockPanel" class="unlock-panel hidden">
+    <div class="unlock-box">
+      <p class="unlock-title">已开启主密码保护</p>
+      <p class="unlock-desc">输入主密码解锁你的 API Key（仅本次会话有效）</p>
+      <input type="password" id="unlockInput" placeholder="主密码" autocomplete="off" />
+      <div class="unlock-actions">
+        <button id="btnUnlock" class="primary">解锁</button>
+        <button id="btnUnlockOptions" class="link">去设置页修改</button>
+      </div>
+      <div id="unlockErr" class="error hidden"></div>
+      <p class="unlock-forgot">忘记主密码？去设置页「重置保护」——会清空已加密的 Key 并重新填写。</p>
+    </div>
+  </div>
+
+  <div id="historyPanel" class="history-panel hidden">
+    <div class="history-head">
+      <span class="history-title">历史记录</span>
+      <div class="history-head-actions">
+        <button id="btnHistoryBatch" class="link" title="批量删除">批量删除</button>
+        <button id="btnHistoryClose" class="close-x" title="关闭" aria-label="关闭">×</button>
+      </div>
+    </div>
+    <div id="historyList" class="history-list"></div>
+    <div id="historyBatchBar" class="history-batch-bar hidden">
+      <span id="historyBatchCount" class="history-batch-count">已选 0 项</span>
+      <button id="btnHistoryDeleteSelected" class="danger-btn" disabled>删除所选</button>
+    </div>
+  </div>
+
+  <footer class="composer">
+    <div id="quoteBar" class="quote-bar hidden">
+      <span class="quote-tag">引用</span>
+      <span class="quote-text" id="quoteText"></span>
+      <button id="btnQuoteClose" class="close-x" title="取消引用" aria-label="取消引用">×</button>
+    </div>
+    <div id="commandMenu" class="command-menu hidden"></div>
+    <div class="input-row">
+      <textarea id="input" placeholder="自定义模型，免费更安全。输入/调用更多功能" rows="1"></textarea>
+      <button id="btnSend" class="send" title="发送" aria-label="发送">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
