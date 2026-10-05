@@ -132,15 +132,18 @@ bash package.sh
    > English: The single purpose is “AI-assisted web reading” — summarizing, questioning and quoting the current page only.
 
 2. **证明权限合理（Justify any permissions）** ⭐ 逐条必写
-   | 权限 | 合理化说明（复制到表单） |
-   |---|---|
-   | `sidePanel` | 提供侧边栏交互界面，承载总结、提问与引用对话框 |
-   | `contextMenus` | 提供右键菜单「AI 就这段内容提问」与「AI 总结选中内容」 |
-   | `storage` | 在本机保存用户添加的自定义模型配置与对话历史，不上传 |
-   | `activeTab` | 仅在用户主动点击工具栏图标或右键时，访问当前标签页内容 |
-   | `scripting` | 向当前页面注入本地自带的正文提取脚本，用于总结与引用 |
-   | `clipboardWrite` | 将 AI 的回答复制到剪贴板 |
-   | `host_permissions <all_urls>` | 需对任意网站读取**已渲染的页面正文**以支持总结；仅用户主动触发、仅读取已渲染内容、**不向开发者发送任何数据** |
+   > 后台为**每条权限单独一个输入框**，上限均为 **1000 字符**（隐私政策 URL 是 2048）。
+   > 完整可复制的 10 段文案见 **`publish/EDGE_PRIVACY_FORM_FILL.md`**，直接对照粘贴即可。
+
+   | 界面字段名 | 权限 | 合理化要点 |
+   |---|---|---|
+   | `sidePanel justification` | `sidePanel` | 所有对话 UI（总结输出、流式回答、输入框、引用条）都渲染在侧边栏里，没有它就无法显示结果或接收输入 |
+   | `contextMenus justification` | `contextMenus` | 产品依赖的两个右键项（「AI 就这段内容提问」「AI 总结选中内容」），也是用户针对选段提问的唯一入口 |
+   | `storage justification` | `storage` | 仅用 `chrome.storage.local` 本地保存用户自己的模型配置、主密码状态、对话历史，不写任何远端 |
+   | `activeTab justification` | `activeTab` | 只在用户主动触发（点图标／右键／总结命令）时读取当前标签页，最小范围的一次性访问，不用于追踪导航 |
+   | `scripting justification` | `scripting` | 注入扩展**自带**的静态提取脚本 `src/shared/extractor.js` 读取已渲染正文，不修改页面、运行时不下任何代码 |
+   | `clipboardWrite justification` | `clipboardWrite` | 唯一用途是用户点「复制」把回答写入剪贴板，从不读取剪贴板、从不后台写入 |
+   | `Host permission justification` | `host_permissions <all_urls>` | 总结任意页面必然要读用户当前所在页，域名无法预先穷举；三点限制：仅用户主动触发／只读已渲染 DOM（不碰 Cookie、凭据、表单、浏览历史）／只发给用户自己配置的 AI 接口 |
 
 3. **声明远程代码的使用（Declare remote code）** ⚠️ 这里最容易踩坑
    - 选择：**否（不使用远程代码）**。
