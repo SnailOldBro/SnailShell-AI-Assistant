@@ -1,0 +1,14 @@
+{
+  "extensionName": {
+    "message": "SnailShell AI Assistant",
+    "description": "Extension name shown in the browser's extension list and management page"
+  },
+  "extensionDescription": {
+    "message": "Summarize any page, ask questions about it, or right-click a selection to ask AI. Works with any OpenAI-compatible model (DeepSeek / Qwen / GLM / Kimi / Ollama, or your own endpoint) using your own API key — your data never passes through any relay server.",
+    "description": "Extension description; this is what the store listing reads"
+  },
+  "extensionTitle": {
+    "message": "SnailShell AI Assistant: your own model, free and private",
+    "description": "Toolbar icon tooltip"
+  }
+}
