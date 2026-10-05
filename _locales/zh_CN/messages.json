@@ -1,0 +1,14 @@
+{
+  "extensionName": {
+    "message": "蜗牛壳AI助理",
+    "description": "扩展名称，显示在浏览器扩展列表与管理页"
+  },
+  "extensionDescription": {
+    "message": "蜗牛壳AI助理：总结网页、针对页面提问、右键引用选段向 AI 提问。支持自定义 OpenAI 兼容模型（DeepSeek / Qwen / GLM / Kimi / Ollama 等），用你自己的 API Key 直连，数据不经任何中转服务器，免费且更安全。",
+    "description": "扩展描述，会被商店页读取"
+  },
+  "extensionTitle": {
+    "message": "蜗牛壳AI助理：自定义模型，免费且安全",
+    "description": "工具栏图标的悬停提示"
+  }
+}
